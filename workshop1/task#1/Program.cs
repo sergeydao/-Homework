@@ -17,11 +17,13 @@ if (first_number == second_number) // теоретически, можно вв�
 }
 else if (first_number > second_number)
 {
-    Console.Write("Ответ: ");
+    Console.WriteLine("Ответ: ");
     Console.WriteLine($"max из двух чисел = {first_number}");
+    Console.WriteLine($"min из двух чисел = {second_number}");
 }
 else
 {
-    Console.Write("Ответ: ");
+    Console.WriteLine("Ответ: ");
     Console.WriteLine($"max из двух чисел = {second_number}");
+    Console.WriteLine($"min из двух чисел = {first_number}");
 }
