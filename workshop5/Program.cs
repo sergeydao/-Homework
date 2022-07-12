@@ -175,3 +175,66 @@ void printArray(double[] array)
         Console.Write(Math.Round(array[i], 2) + " ");
     }
 }
+
+/* **Задача 1.** Задан массив из случайных цифр на 15 элементов. 
+На вход подаётся трёхзначное натуральное число. Напишите программу, которая определяет, 
+есть в массиве последовательность из трёх элементов, совпадающая с введённым числом.
+
+{0, 5, 6, 2, 7, 7, 8, 1, 1, 9} - 277 -> да
+{4, 4, 3, 6, 7, 0, 8, 5, 1, 2} - 812 -> нет */
+
+Zadacha1();
+void Zadacha1()
+{
+int size = 15;
+int[] array = new int[size];
+int firsNumber = 1;
+int secondNumber = 9;
+fillArray(array, firsNumber, secondNumber);
+Console.WriteLine();
+printArray(array);
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Введите заданное число:");
+int number = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine();
+sortArray(array, number);
+Console.WriteLine();
+}
+
+
+void sortArray(int[] array, int number)
+{
+    for (int i = 0; i < array.Length - 2; i++)
+    {
+        if (array[i] == (number / 100) && array[i + 1] == ((number / 10) % 10) && array[i + 2] == (number % 10))
+        {
+            Console.WriteLine($"В массиве есть последовательность из трёх элементов, совпадающая с {number}");
+            break;
+        }
+        else if (i == array.Length - 3)
+        {
+            Console.WriteLine($"В массиве нет последовательности из трёх элементов, совпадающей с {number}");
+        }
+    }
+}
+
+
+int[] fillArray(int[] array, int firsNumber = 0, int secondNumber = 0)
+{
+    secondNumber++;
+    Random rand = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rand.Next(firsNumber, secondNumber);
+    }
+    return array;
+}
+
+void printArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+}
